@@ -2,6 +2,7 @@
 
 ```
 cd frontend/
+npm install
 npm run start
 ```
 
@@ -23,4 +24,3 @@ docker stop <ID>
 ## Rest API Docs
 
 https://documenter.getpostman.com/view/3996315/UVyysCNK
-
