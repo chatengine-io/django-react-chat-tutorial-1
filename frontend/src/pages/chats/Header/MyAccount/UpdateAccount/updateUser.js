@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const updateUser = (currentUser, newValues, onSuccess, onError) => {
-  const str = currentUser.username + ":" + currentUser.password;
+  const str = currentUser.username + ":" + currentUser.plaintext_password;
   const token = btoa(str);
 
   axios

@@ -16,8 +16,10 @@ const EditAccount = (props) => {
     setError("");
 
     const user = r.data;
-    user.secret = user.password;
-    user.password = values.password;
+    // Hashed password for Chat Engine
+    user.hashed_password = user.password;
+    // Plaintext password for Basic Auth
+    user.plaintext_password = values.password;
     setUser(user);
 
     notification.success({

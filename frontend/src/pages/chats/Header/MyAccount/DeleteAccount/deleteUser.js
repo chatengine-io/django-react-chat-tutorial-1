@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const deleteUser = (values, onSuccess, onError) => {
-  const str = values.username + ":" + values.password;
+export const deleteUser = (currentUser, onSuccess, onError) => {
+  const str = currentUser.username + ":" + currentUser.plaintext_password;
   const token = btoa(str);
 
   axios
