@@ -8,11 +8,91 @@
   width: 12px !important;
   height: 12px !important;
 }
-
-.ce-message-form {
-  width: 105% !important;
+.ce-avatar {
+  color: #f0f0f0 !important;
 }
 
+/* Chat List */
+
+.ce-chat-list-column {
+  border: none !important;
+}
+.ce-chat-list {
+  background-color: #4e426d !important;
+}
+.ce-chat-form {
+  background-color: #4e426d !important;
+  color: white !important;
+}
+.ce-chat-card {
+  background-color: #5c4e80 !important;
+}
+
+/* Chat Feed */
+
+.ch-chat-feed {
+  background-color: #4e426d !important;
+}
+.ce-chat-header {
+  background-color: #4e426d !important;
+  color: #f0f0f0 !important;
+}
+.ce-spinner {
+  filter: invert();
+}
+#ce-ice-breaker-gif {
+  max-width: 120px !important;
+  margin-top: 54px !important;
+}
+.ce-message-list {
+  background-color: #5c4e80 !important;
+  margin: 12px !important;
+  height: calc(100% - 156px) !important;
+  border-radius: 24px !important;
+}
+.ce-attachment-icon {
+  border: none !important;
+}
 #msg-textarea {
   top: 4px !important;
+  left: 14px !important;
+  height: 32px !important;
+  padding: 5px 42px 4px 18px !important;
+  border-radius: 16px !important;
+  width: calc((100% - 24px) - 70px) !important;
+  font-size: 14px !important;
+}
+.ce-attachment-input {
+  left: -24px !important;
+}
+#ce-send-message-button {
+  left: -14px !important;
+  top: -8px !important;
+  background-color: #3ec7b6 !important;
+}
+.ce-message-date-text {
+  color: #f0f0f0 !important;
+}
+.ce-my-message-body {
+  background-color: #f0aa86 !important;
+}
+.ce-my-message-timestamp {
+  color: #f0aa86 !important;
+}
+.ce-their-message-body {
+  background-color: #4e426d !important;
+  color: #f0f0f0 !important;
+}
+.ce-their-message-timestamp {
+  color: #f0f0f0 !important;
+}
+.ce-their-message-sender-username {
+  color: #f0f0f0 !important;
+}
+
+/* Chat Settings */
+
+.ce-chat-settings-column {
+  background-color: #4e426d !important;
+  border: none !important;
 }
