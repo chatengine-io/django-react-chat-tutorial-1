@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Context } from "../../context";
 
 import Header from "./Header";
+import ChatList from "./ChatList";
 
 import {
   MultiChatWindow,
@@ -30,54 +31,20 @@ const ChatsPage = () => {
         <div
           style={{ height: "calc(100vh - 64px)", backgroundColor: "#e8e5f4" }}
         >
-          <div
-            style={{
-              position: "absolute",
-              top: "84px",
-              left: "-84px",
-              width: "324px",
-              height: "324px",
-              borderRadius: "50%",
-              backgroundColor: "#f0aa86",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              top: "84px",
-              left: "184px",
-              width: "24px",
-              height: "24px",
-              borderRadius: "50%",
-              backgroundColor: "#f0aa86",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              top: "124px",
-              left: "224px",
-              width: "94px",
-              height: "94px",
-              borderRadius: "50%",
-              backgroundColor: "#f0aa86",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              bottom: "30px",
-              right: "70px",
-              width: "94px",
-              height: "94px",
-              borderRadius: "50%",
-              backgroundColor: "#f0aa86",
-            }}
-          />
+          <div className="bubble-1" />
+          <div className="bubble-2" />
+          <div className="bubble-3" />
+          <div className="bubble-4" />
 
           <MultiChatSocket {...chatProps} />
           <MultiChatWindow
             {...chatProps}
+            renderChatList={(props) => (
+              <ChatList
+                {...props}
+                onChatCardClick={chatProps.onChatCardClick}
+              />
+            )}
             style={{
               position: "absolute",
               top: "calc(10vh + 64px)",
