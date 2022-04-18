@@ -1,18 +1,45 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
+
+import { fetchUserList } from "./fetchUserList";
+import { getOrCreateChat } from "./getOrCreateChat";
 
 import { Context } from "../../../context";
 import { Input, ChatCard } from "react-chat-engine-advanced";
 
 const ChatList = (props) => {
-  const { user } = useContext(Context);
+  const didMountRef = useRef(false);
+  const { user, userList, setUserList } = useContext(Context);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      fetchUserList(
+        (r) => {
+          console.log(r.data.results);
+          setUserList(r.data.results);
+        },
+        (e) => console.log(e)
+      );
+    }
+  });
+
+  const getOtherUser = (chat) => {
+    let username = "";
+    chat.people.map((person) => {
+      if (person.person.username !== user.username) {
+        username = person.person.first_name + " " + person.person.last_name;
+      }
+    });
+    return username;
+  };
 
   const renderChats = () => {
     return props.chats.map((chat, index) => {
       return (
         <ChatCard
           key={`chat-card-${index}`}
-          title={chat.title}
+          title={getOtherUser(chat)}
           description={
             chat.last_message.text ? chat.last_message.text : "Say hello!"
           }
@@ -31,7 +58,37 @@ const ChatList = (props) => {
   };
 
   const renderSearch = () => {
-    return <div>results</div>;
+    return userList.map((otherUser, index) => {
+      const userStr = `${otherUser.username} ${otherUser.email} ${otherUser.first_name} ${otherUser.last_name}`;
+
+      if (
+        userStr.indexOf(search) !== -1 &&
+        otherUser.username !== user.username &&
+        otherUser.username !== "admin"
+      ) {
+        return (
+          <ChatCard
+            key={`chat-card-${index}`}
+            title={`${otherUser.first_name} ${otherUser.last_name}`}
+            description={otherUser.username}
+            style={{ margin: "6px 12px 6px 12px" }}
+            onClick={() =>
+              getOrCreateChat(
+                user,
+                otherUser.username,
+                (r) => {
+                  setSearch("");
+                  props.onChatCardClick(r.data.id);
+                },
+                (e) => console.log(e)
+              )
+            }
+          />
+        );
+      } else {
+        return <div />;
+      }
+    });
   };
 
   return (
@@ -44,6 +101,7 @@ const ChatList = (props) => {
     >
       <Input
         label="Search"
+        value={search}
         onChange={(e) => setSearch(e.target.value)}
         className="search-bar"
       />
