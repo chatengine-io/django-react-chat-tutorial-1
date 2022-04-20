@@ -52,6 +52,8 @@ const ChatList = (props) => {
           hasNotification={user.username !== chat.last_message.sender_username}
           style={{ margin: "6px 12px 6px 12px" }}
           onClick={() => props.onChatCardClick(chat.id)}
+          avatarUsername={chat.last_message.sender_username}
+          avatarUrl={chat.last_message.sender?.avatar}
         />
       );
     });
@@ -72,6 +74,8 @@ const ChatList = (props) => {
             title={`${otherUser.first_name} ${otherUser.last_name}`}
             description={otherUser.username}
             style={{ margin: "6px 12px 6px 12px" }}
+            avatarUsername={otherUser.username}
+            avatarUrl={otherUser.avatar}
             onClick={() =>
               getOrCreateChat(
                 user,
