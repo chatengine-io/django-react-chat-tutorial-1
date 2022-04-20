@@ -19,7 +19,13 @@ const Header = () => {
   };
 
   return (
-    <div style={{ height: "64px", width: "100vw", backgroundColor: "#001529" }}>
+    <div
+      style={{
+        height: "64px",
+        width: "100vw",
+        backgroundColor: "#001529",
+      }}
+    >
       <div
         style={{
           paddingTop: "14px",
